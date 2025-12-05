@@ -7,6 +7,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Default backend API URL (override in docker-compose)
+ENV API_BASE=http://localhost:8000
+
 EXPOSE 8080
 
 CMD ["python", "app.py"]

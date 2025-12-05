@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: k8s-test-project-backend
+  name: k8s-test-project-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-test-project-backend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: k8s-test-project-backend
+    spec:
+      containers:
+      - image: k8s-test-project-backend:1.0.0
+        name: k8s-test-project-backend
+        resources: {}

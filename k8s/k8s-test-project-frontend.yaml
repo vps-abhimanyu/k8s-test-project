@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: k8s-test-project-frontend
+  name: k8s-test-project-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-test-project-frontend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: k8s-test-project-frontend
+    spec:
+      containers:
+      - image: k8s-test-project-frontend:1.0.0
+        name: k8s-test-project-frontend
+        env:
+          - name: API_BASE
+            value: "http://localhost:8000"
+        resources: {}
