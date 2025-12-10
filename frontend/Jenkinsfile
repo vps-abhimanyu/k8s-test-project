@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "k8s-test-project/frontend"
+        IMAGE_TAG  = "latest"
+        REGISTRY_CREDENTIALS = "docker-creds"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                }
+            }
+        }
+
+        stage('Login to Registry') {
+            steps {
+                script {
+                    sh "echo login sucessfully"
+                    //sh "echo ${env.REGISTRY_CREDENTIALS_PSW} | docker login -u ${env.REGISTRY_CREDENTIALS_USR} --password-stdin"
+                }
+            }
+        }
+
+        stage('Push Image') {
+            steps {
+                sh "echo push sucessfully"
+                //sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+            }
+        }
+    }
+}
