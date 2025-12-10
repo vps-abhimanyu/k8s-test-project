@@ -18,4 +18,10 @@ spec:
       containers:
       - image: k8s-test-project-backend:1.0.0
         name: k8s-test-project-backend
-        resources: {}
+        resources:
+          requests:
+            cpu: "100m" # Request 0.1 CPU core
+            memory: "128Mi" # Request 128 MiB of memory
+          limits:
+            cpu: "256m" # Limit to 0.5 CPU core
+            memory: "256Mi" # Limit to 512 MiB of memory
