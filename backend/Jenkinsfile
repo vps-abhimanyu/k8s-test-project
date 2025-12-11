@@ -37,5 +37,12 @@ pipeline {
                 //sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
             }
         }
+
+        stage('Deply The Application') {
+            steps {
+                sh "docker run -d --network test-network --name backend ${IMAGE_NAME}:${IMAGE_TAG}"
+                //sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+            }
+        }
     }
 }
