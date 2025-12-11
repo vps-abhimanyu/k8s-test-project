@@ -40,7 +40,7 @@ pipeline {
 
         stage('Deply The Application') {
             steps {
-                sh "docker run -d --network test-network --name frontend -e API_BASE=http://backend:8000 ${IMAGE_NAME}:${IMAGE_TAG}"
+                sh "docker run -d --network test-network -p 8090:8080--name frontend -e API_BASE=http://backend:8000 ${IMAGE_NAME}:${IMAGE_TAG}"
                 //sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
             }
         }
