@@ -42,7 +42,7 @@ pipeline {
             steps {
                 sh "docker network create test-network || true"
                 sh "docker rm -f frontend || true"
-                sh "docker run -d --network test-network -p 8090:8080--name frontend -e API_BASE=http://backend:8000 ${IMAGE_NAME}:${IMAGE_TAG}"
+                sh "docker run -d --network test-network -p 8090:8080 --name frontend -e API_BASE=http://backend:8000 ${IMAGE_NAME}:${IMAGE_TAG}"
                 //sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
             }
         }
