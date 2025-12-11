@@ -42,7 +42,7 @@ pipeline {
             steps {
                 sh "docker network create test-network || true"
                 sh "docker rm -f backend || true"
-                sh "docker run -d --network test-network --name backend ${IMAGE_NAME}:${IMAGE_TAG}"
+                sh "docker run -d --network test-network --name backend -p 8002:8000 ${IMAGE_NAME}:${IMAGE_TAG}"
                 //sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
             }
         }
